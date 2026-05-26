@@ -36,9 +36,9 @@
     </div>
 
     <script>
-        // Updated with your specific Cluster credentials
+        // Configured explicitly with your HiveMQ Cluster details
         const HOST = "f41ae93c9d2940c481e87718c8f75dc7.s1.eu.hivemq.cloud"; 
-        const PORT = 8884; 
+        const PORT = 8884; // Secure WebSocket Port
         const USER = "amrita_node";
         const PASS = "HealNet2026";
 
@@ -64,7 +64,10 @@
         };
 
         client.connect({
-            onSuccess: () => { client.subscribe("network/dashboard_stream"); },
+            onSuccess: () => { 
+                console.log("Connected to HiveMQ Cloud!");
+                client.subscribe("network/dashboard_stream"); 
+            },
             useSSL: true,
             userName: USER,
             password: PASS
